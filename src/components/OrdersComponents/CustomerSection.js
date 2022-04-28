@@ -3,45 +3,23 @@ import CustomerHeaderImage from "../../assets/ordersIcons/iCustomer.svg";
 import "../../orders.scss";
 import { useTranslation } from "react-i18next";
 import Popup from "../../pages/side/Orders/ManuelOrder/Popup/Popup.js"
-const CustomerSection = ({handle,Submit,data}) => {
+const CustomerSection = ({handle,data}) => {
   const{t} = useTranslation(["orders","orders/manorder"])
-const [buttonpop, setButtonpop] = useState(false)
-// const [data, setData] = useState({
-//   country: "",
-//   city: "",
-//   state: "", 
-//   address: "",
-//   zipcode: "",
-//   name: "",
-//   phone: "",
-//   email: "",
-//   userID:'1'
-// });
-// function handle(e){
-//   e.preventDefault()
-//   const newdata={...data}
-//   newdata[e.target.id] = e.target.value;
-//   setData(newdata)
-//   // console.log(JSON.parse(userinfo));
-// };
-// function Submit(){
-//   let emtyinputs=Object.values(data).slice(1).every(a=>(a && a!=="0"));
-//   if (emtyinputs){
-//     // e.preventDefault();\
-//     let items = JSON.stringify(data);
-//     localStorage.setItem('adress_information', items);
-//     let userinfo = localStorage.getItem('adress_information');
-//     let send = JSON.parse(userinfo);
-//     axios.post('http://kargo.kendigetir.az/public/api/address/create', send)
-//       .then(res => console.log(res))
-//       .catch((error) => {
-//         if (error.response) {
-//           console.log(error.response.data);
-//         }
-//       })
-//   }
-
-// }
+const [buttonpop, setButtonpop] = useState(false);
+const [subbuton, setSubbuton]= useState(false);
+function Submit() {
+    let userinfo = localStorage.getItem('adress_information');
+    let send = JSON.parse(userinfo);
+    setSubbuton(!subbuton);
+    console.log(subbuton);
+    // axios.post('http://kargo.kendigetir.az/public/api/address/create', send)
+    //   .then(res => console.log(res))
+    //   .catch((error) => {
+    //     if (error.response) {
+    //       console.log(error.response.data);
+    //     }})
+    // EN SONDA AXIOS ILE APILER POST OLUNMALIDIR BACKENDE.....
+  }
 
   return (
     <div className="customer-section">
@@ -57,7 +35,8 @@ const [buttonpop, setButtonpop] = useState(false)
             <div className="customer-info-top">
               <button onClick={()=>setButtonpop(!buttonpop)}>{t("orders/manorder:addressbook")}</button>
             </div>
-            <Popup setTrigger={setButtonpop} trigger={buttonpop} />
+            <Popup setTrigger={setButtonpop} trigger={buttonpop} Submit={Submit} 
+              subbuton={subbuton} />
 
             <div className="customer-info-bottom">
               <div className="address-info">

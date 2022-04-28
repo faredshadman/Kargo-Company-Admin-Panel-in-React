@@ -25,6 +25,7 @@ const ManuelOrder = () => {
   let userinfo = localStorage.getItem('adress_information');
   let send = JSON.parse(userinfo);
 }
+
   if (emtycommon){
     let items = JSON.stringify(com);
     localStorage.setItem('common_information', items);
@@ -37,7 +38,6 @@ const ManuelOrder = () => {
     const newdata = { ...data }
     newdata[e.target.id] = e.target.value;
     setData(newdata);
-    console.log(newdata);
     // console.log(JSON.parse(userinfo));
   };
 
@@ -45,35 +45,15 @@ function Common(e){
 const newdata={...com}
 newdata[e.target.id] = e.target.value;
 setCom(newdata);
-console.log(newdata);
 }
 
-// function Submit(){
-//   let emtyinputs=Object.values(data).slice(1).every(a=>(a && a!=="0"));
-  
-//   if (emtyinputs){
-//     // e.preventDefault();\
-//     let items = JSON.stringify(data);
-//     localStorage.setItem('adress_information', items);
-//     let userinfo = localStorage.getItem('adress_information');
-//     let send = JSON.parse(userinfo);
-//     // axios.post('http://kargo.kendigetir.az/public/api/address/create', send)
-//     //   .then(res => console.log(res))
-//     //   .catch((error) => {
-//     //     if (error.response) {
-//     //       console.log(error.response.data);
-//     //     }})
-//     // EN SONDA AXIOS ILE APILER POST OLUNMALIDIR BACKENDE.....
-//     setToggle(()=>!toggle);
-    
 
-//   }
-// }
   return (
     <>
-      <CustomerSection data={data} handle={handle} />
+      <CustomerSection data={data} handle={handle}  />
       {emtyinputs ? <CommonInformation com={com} Common={Common} />:""}
       {emtyinputs&&emtycommon ? <OrderInformation />:""}
+      {/* {emtyinputs && emtycommon ? <MainPackage /> : ""} */}
       <MainPackage />
       <ShipmentDefination shipment={true} />
       <ProductContent />

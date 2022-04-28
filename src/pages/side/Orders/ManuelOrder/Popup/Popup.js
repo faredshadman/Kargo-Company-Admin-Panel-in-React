@@ -2,12 +2,11 @@ import React from 'react'
 import '../Popup/Popup.css'
 import axios from 'axios';
 import AdressIcon from "../../../../../assets/Popupicons/adressbook.svg"
-function Popup(props) {
-    
-
-
-
-  return ( props.trigger) ? (
+function Popup({ setTrigger, trigger,subbuton, Submit}) {
+   
+        let userinfo = localStorage.getItem('adress_information');
+        let send = JSON.parse(userinfo);
+  return (trigger) ? (
     <div className='popup'>
         <div className="popup-inner">
             <div className="header">
@@ -28,36 +27,18 @@ function Popup(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                        </tr>
-                          <tr>
-                              <td>1</td>
-                              <td>2</td>
-                              <td>3</td>
-                              <td>4</td>
-                          </tr>
-                          <tr>
-                              <td>1</td>
-                              <td>2</td>
-                              <td>3</td>
-                              <td>4</td>
-                          </tr>
-                          <tr>
-                              <td>1</td>
-                              <td>2</td>
-                              <td>3</td>
-                              <td>4</td>
-                          </tr>
-
+                          {subbuton?<tr>
+                                  <td>{send.country}</td>
+                                  <td>{send.city}</td>
+                                  <td>{send.address}</td>
+                                  <td>{send.name}</td>
+                                    
+                                    </tr>:""}
                     </tbody>
                 </table>
             </div>
             <div className='button-close'>
-                  <button onClick={()=>props.setTrigger(!props.trigger)} className="closeup-btn">Close</button>
+                  <button onClick={()=>setTrigger(!trigger)} className="closeup-btn">Close</button>
             </div>
         </div>
     </div>

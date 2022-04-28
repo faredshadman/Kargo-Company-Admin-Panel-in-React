@@ -3,7 +3,7 @@ import PackageInputGroups from "./PackageInputGroups";
 import PackageImage from "../../../assets/ordersIcons/package.svg";
 import { useTranslation } from "react-i18next";
 
-const PackageSection = ({ middle }) => {
+const PackageSection = ({ middle,Active_button}) => {
   const {t}=useTranslation(["orders","orders/manorder"])
 
   return (
@@ -15,7 +15,9 @@ const PackageSection = ({ middle }) => {
           <img src={PackageImage} alt="packagePlus" />
           <h4>{t("orders/manorder:package")}</h4>
         </div>
+        <div onClick={Active_button}>          
         <i className="far fa-angle-up"></i>
+        </div>
       </div>
       {/* packageInputs */}
       <PackageInputGroups />

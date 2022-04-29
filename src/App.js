@@ -6,7 +6,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-
+// salam dunya changed
 //components
 
 // itop comps
@@ -46,7 +46,7 @@ function App() {
     <Router>
       {isLoggedIn && (
         <>
-          <Header  />
+          <Header />
           <SideBar />
           <Routes>
             {/* home page  Burasi isLoggend olannan sonra gorsenmez Bunu ise GirisSayfasiReducerde ayarladim  */}
